@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-
-// // static assets
-// app.use(express.static('./public'));
+const { jsPDF } = require('jspdf');
+var fs = require('fs');
 
 // parse form data
 app.use(express.urlencoded({ extended: false }));
@@ -11,16 +10,42 @@ app.post('/api/user_data', (req, res) => {
   const { data } = req.body;
   console.log('Request Message from client:' + data);
 
-  var str = String(data);
-  str = str.toUpperCase();
-  console.log(str);
+  // Accessing data from request message.
+  var response = String(data);
+  response = response.toUpperCase();
+  console.log(response);
 
-  if (str === 'NO') {
-    return res.status(200).send(`Zia is a bad puppy :[ .`);
-  } else if (str === 'YES') {
-    return res.status(200).send(`Zia is a good puppy :] .`);
+  // Initial document creation.
+  const doc = new jsPDF();
+  var path_url;
+  var format;
+
+  if (response === 'NO') {
+    // Format document
+    path_url = 'ziaBad.jpg';
+    format = 'JPEG';
+    var imgData = fs.readFileSync(path_url).toString('base64');
+    doc.addImage(imgData, format, 60, 60, 100, 100);
+    doc.setFontSize(40);
+    doc.text('Zia is a bad puppy!', 45, 25);
+    doc.save('response.pdf');
+
+    // Send file to client.
+    return res.status(200).download('./response.pdf');
+  } else if (response === 'YES') {
+    // Format document
+    path_url = 'ziaGood.jpg';
+    format = 'JPEG';
+    var imgData = fs.readFileSync(path_url).toString('base64');
+    doc.addImage(imgData, format, 60, 60, 100, 100);
+    doc.setFontSize(40);
+    doc.text('Zia is a good puppy!', 45, 25);
+    doc.save('response.pdf');
+
+    // Send file to client.
+    return res.status(200).download('./response.pdf');
   }
-  res.status(401).send('Wut');
+  res.status(401).send('Wut, try saying yes or no.');
 });
 
 app.listen(5000, () => {
