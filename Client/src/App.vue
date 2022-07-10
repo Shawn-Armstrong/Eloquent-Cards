@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <Form  v-on:choosetemplate="choosetemplate" v-on:submitinfo="submit" v-if="templateChosen"/>
+    <Form
+      v-on:choosetemplate="choosetemplate"
+      v-on:submitinfo="submit"
+      v-if="templateChosen"
+    />
 
-
-    <Templates v-on:choosetemplate="choosetemplate" v-on:templatetype="templatenum" v-if="!templateChosen"/>
-    
+    <Templates
+      v-on:choosetemplate="choosetemplate"
+      v-on:templatetype="templatenum"
+      v-if="!templateChosen"
+    />
   </div>
 </template>
 
 <script>
 import Templates from "./components/Templates.vue";
 import Form from "./components/Form.vue";
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "App",
@@ -21,7 +27,7 @@ export default {
   },
   data() {
     return {
-      templateChosen: true,
+      templateChosen: false,
       cardInfo: {
         personalInfo: {
           name: "",
@@ -30,7 +36,7 @@ export default {
           phoneNumber: "",
         },
         templateInfo: {
-          number: ""
+          number: "",
         },
       },
     };
@@ -39,17 +45,17 @@ export default {
     choosetemplate(variable) {
       this.templateChosen = variable;
     },
-    submit(personalInfo){
-      console.log("parent submit function")
-      this.personalInfo = personalInfo;
-      console.log(this.personalInfo)
+    submit(personalInfo) {
+      console.log("parent submit function");
+      this.cardInfo.personalInfo = personalInfo;
+      console.log(this.cardInfo);
 
       axios.post("http://localhost:5000/api/user_data", this.cardInfo);
     },
-    templatenum(templateInfo){
-      this.templateInfo = templateInfo;
-      console.log(this.templateInfo)
-    } 
+    templatenum(templateInfo) {
+      this.cardInfo.templateInfo = templateInfo;
+      console.log(this.cardInfo.templateInfo);
+    },
   },
 };
 </script>
