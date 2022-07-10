@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import Templates from "./components/Templates.vue";
-import Form from "./components/Form.vue";
-import axios from "axios";
+import Templates from './components/Templates.vue';
+import Form from './components/Form.vue';
+import axios from 'axios';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Templates,
     Form,
@@ -30,13 +30,13 @@ export default {
       templateChosen: false,
       cardInfo: {
         personalInfo: {
-          name: "",
-          company: "",
-          email: "",
-          phoneNumber: "",
+          name: '',
+          company: '',
+          email: '',
+          phoneNumber: '',
         },
         templateInfo: {
-          number: "",
+          number: '',
         },
       },
     };
@@ -46,11 +46,29 @@ export default {
       this.templateChosen = variable;
     },
     submit(personalInfo) {
-      console.log("parent submit function");
+      console.log('parent submit function');
       this.cardInfo.personalInfo = personalInfo;
       console.log(this.cardInfo);
 
-      axios.post("http://localhost:5000/api/user_data", this.cardInfo);
+      axios({
+        url: 'http://localhost:5000/api/download_card',
+        method: 'POST',
+        responseType: 'blob',
+        data: {
+          cardInfo: this.cardInfo,
+        },
+      }).then((response) => {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileLink = document.createElement('a');
+
+        fileLink.href = fileURL;
+        fileLink.setAttribute('download', 'file.pdf');
+        document.body.appendChild(fileLink);
+
+        fileLink.click();
+      });
+
+      // axios.post('http://localhost:5000/api/download_card', this.cardInfo);
     },
     templatenum(templateInfo) {
       this.cardInfo.templateInfo = templateInfo;
@@ -62,7 +80,7 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

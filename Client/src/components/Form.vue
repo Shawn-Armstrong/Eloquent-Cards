@@ -37,7 +37,7 @@
 
     <v-btn color="blue" @click="reset"> Reset Form </v-btn>
 
-    <v-btn color="blue" @click="submit"> SUBMIT </v-btn>
+    <v-btn color="blue" @click="submit"> DOWNLOAD CARD </v-btn>
   </v-form>
 </section>
 </template>
