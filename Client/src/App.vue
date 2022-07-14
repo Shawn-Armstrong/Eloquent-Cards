@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Sidebar />
     <Form
       v-on:choosetemplate="choosetemplate"
       v-on:submitinfo="submit"
@@ -17,6 +18,8 @@
 <script>
 import Templates from './components/Templates.vue';
 import Form from './components/Form.vue';
+import Sidebar from './components/sidebar/Sidebar.vue';
+import { sidebarWidth } from '@/components/sidebar/state';
 import axios from 'axios';
 
 export default {
@@ -24,6 +27,10 @@ export default {
   components: {
     Templates,
     Form,
+    Sidebar,
+  },
+  setup() {
+    return { sidebarWidth }
   },
   data() {
     return {
