@@ -3,15 +3,23 @@
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-text-field
       v-model="personalInfo.name"
-      :counter="10"
+      :counter="26"
       :rules="nameRules"
       label="Name"
       required
     ></v-text-field>
 
     <v-text-field
+      v-model="personalInfo.title"
+      :counter="26"
+      :rules="titleRules"
+      label="Job Title"
+      required
+    ></v-text-field>
+
+    <v-text-field
       v-model="personalInfo.companyName"
-      :counter="10"
+      :counter="26"
       :rules="companynameRules"
       label="Company Name"
       required
@@ -19,7 +27,7 @@
 
     <v-text-field
       v-model="personalInfo.email"
-      :counter="10"
+      :counter="26"
       :rules="emailRules"
       label="E-mail"
       required
@@ -27,14 +35,14 @@
 
     <v-text-field
       v-model="personalInfo.website"
-      :counter="10"
+      :counter="26"
       :rules="websiteRules"
       label="Website"
     ></v-text-field>
 
     <v-text-field
       v-model="personalInfo.phoneNumber"
-      :counter="10"
+      :counter="26"
       :rules="phoneNumberRules"
       label="Phone Number"
       required
@@ -42,7 +50,6 @@
 
     <v-text-field
       v-model="personalInfo.address"
-      :counter="10"
       :rules="addressRules"
       label="Address"
       required
@@ -70,10 +77,11 @@ export default {
         phoneNumber: "",
         companyName: "",
         website: "",
+        title: "",
       },
       nameRules: [
         (v) => !!v || "Name is required",
-        (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
+        (v) => (v && v.length <= 26) || "Name must be less than 26 characters",
       ],
       emailRules: [
         (v) => !!v || "E-mail is required",
@@ -89,7 +97,12 @@ export default {
         (v) => !!v || "Company Name is required",
       ],
       websiteRules: [
-        (v) => (v && v.length <= 10) || "Website must be less than 10 characters",
+        (v) => !!v || "Website is required",
+        (v) => (v && v.length <= 26) || "Website must be less than 26 characters",
+      ],
+      titleRules: [
+        (v) => !!v || "Job Title is required",
+        (v) => (v && v.length <= 20) || "Title must be less than 20 characters",
       ]
     };
   },
@@ -122,5 +135,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  margin-left: 200px;
+  margin-right: 200px;
 }
 </style>

@@ -17,7 +17,7 @@
                 <v-card
                   class="text-xs-center ma-3"
                   :elevation="hover ? 15 : 6"
-                  color="#fff"
+                  color= "white"
                   :src="template.src"
                 >
                   <v-responsive class="pt-0">
@@ -102,17 +102,16 @@ export default {
   transform-style: preserve-3d;
 }
 .flip-card-container:hover .flip-card {
-  transform: rotateY(180deg); /* <=>  rotateY(.5turn) */
+  transform: rotateY(180deg);
 }
-/* Position the front and back side */
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /* border-radius: 0.5rem; */
 }
 
 .flip-card-back {
