@@ -34,6 +34,8 @@ export default {
           company: '',
           email: '',
           phoneNumber: '',
+          companyName: '',
+          website: '',
         },
         templateInfo: {
           number: '',

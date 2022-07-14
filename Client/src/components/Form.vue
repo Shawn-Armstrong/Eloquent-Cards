@@ -10,11 +10,26 @@
     ></v-text-field>
 
     <v-text-field
+      v-model="personalInfo.companyName"
+      :counter="10"
+      :rules="companynameRules"
+      label="Company Name"
+      required
+    ></v-text-field>
+
+    <v-text-field
       v-model="personalInfo.email"
       :counter="10"
       :rules="emailRules"
       label="E-mail"
       required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="personalInfo.website"
+      :counter="10"
+      :rules="websiteRules"
+      label="Website"
     ></v-text-field>
 
     <v-text-field
@@ -53,6 +68,8 @@ export default {
         company: "",
         email: "",
         phoneNumber: "",
+        companyName: "",
+        website: "",
       },
       nameRules: [
         (v) => !!v || "Name is required",
@@ -68,6 +85,12 @@ export default {
       phoneNumberRules: [
         (v) => !!v || "Phone Number is required",
       ],
+      companynameRules: [
+        (v) => !!v || "Company Name is required",
+      ],
+      websiteRules: [
+        (v) => (v && v.length <= 10) || "Website must be less than 10 characters",
+      ]
     };
   },
   methods: {
