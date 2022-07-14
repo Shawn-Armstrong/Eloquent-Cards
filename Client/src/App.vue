@@ -31,10 +31,10 @@ export default {
       cardInfo: {
         personalInfo: {
           name: '',
-          company: '',
+          companyName: '',
           email: '',
           phoneNumber: '',
-          companyName: '',
+          address: '',
           website: '',
         },
         templateInfo: {
@@ -69,8 +69,6 @@ export default {
 
         fileLink.click();
       });
-
-      // axios.post('http://localhost:5000/api/download_card', this.cardInfo);
     },
     templatenum(templateInfo) {
       this.cardInfo.templateInfo = templateInfo;

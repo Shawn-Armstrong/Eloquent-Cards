@@ -18,13 +18,19 @@ app.post('/api/download_card', (req, res) => {
       req.body.cardInfo.personalInfo.name +
       '\n' +
       'Company: ' +
-      req.body.cardInfo.personalInfo.company +
+      req.body.cardInfo.personalInfo.companyName +
       '\n' +
       'Email: ' +
       req.body.cardInfo.personalInfo.email +
       '\n' +
+      'Website: ' +
+      req.body.cardInfo.personalInfo.website +
+      '\n' +
       'Phone Number: ' +
       req.body.cardInfo.personalInfo.phoneNumber +
+      '\n' +
+      'Address:' +
+      req.body.cardInfo.personalInfo.address +
       '\n' +
       'Template Number: ' +
       req.body.cardInfo.templateInfo +
