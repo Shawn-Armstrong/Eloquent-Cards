@@ -37,21 +37,28 @@ class CardGenerator {
       doc.addImage(template.back_imgdata, 'JPEG', X, Y+60, 90, 50);
       //name
       doc.setFont("Sen-Regular","normal");
-      doc.setFontSize(tmp.name.size);
+      doc.setFontSize(tmp.font_size.name);
       doc.text(config.name, X + tmp.name.x, Y + tmp.name.y, {maxWidth: 35});
       //detail
-      doc.setFontSize(tmp.detail.size);
+      /*
+      doc.setFontSize(tmp.font_size.detail);
       doc.text(config.phone_number, X + tmp.detail.phone_number.x,  Y + tmp.detail.phone_number.y,  {maxWidth: 30}); 
       doc.text(config.email,        X + tmp.detail.email.x,         Y + tmp.detail.email.y,         {maxWidth: 30});
       doc.text(config.website,      X + tmp.detail.website.x,       Y + tmp.detail.website.y,       {maxWidth: 30});
       doc.text(config.address,      X + tmp.detail.address.x,       Y + tmp.detail.address.y,       {maxWidth: 30});
+      */
+      doc.setFontSize(tmp.font_size.detail);
+      for(const section in tmp.detail){
+        doc.text(config[section], X + tmp.detail[section].x,  Y + tmp.detail[section].y,  {maxWidth: 30}); 
+      }
+      
       //company icon, only name if not provided
       if(config.icon_data == "" || config.icon_data == undefined){
-        doc.setFontSize(tmp.company.size);
+        doc.setFontSize(tmp.font_size.company);
         doc.text(config.company, X + tmp.company.x, Y + tmp.company.y, {align: "center", maxWidth: 30});
       }else{
         doc.addImage(config.icon_data, 'JPEG', X + tmp.icon_data.x, Y + tmp.icon_data.y, tmp.icon_data.w, tmp.icon_data.h);
-        doc.setFontSize(tmp.company.size);
+        doc.setFontSize(tmp.font_size.company);
         doc.text(config.company, X + tmp.company.x_img, Y + tmp.company.y_img, {align: "center", maxWidth: 30});
       }
       return doc;
