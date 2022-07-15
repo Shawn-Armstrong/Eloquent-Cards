@@ -5,22 +5,18 @@
       v-on:templatetype="templatenum"
       v-if="!templateChosen"
     />
-    <div class="d-flex flex-row mb-6">
+    <div class="d-flex flex-row mb-6 justify-center">
       <div id="menu">
-        <!-- ## Removed from UserForm properties ##
-      v-if="templateChosen" 
-       -->
         <UserForm
           v-on:choosetemplate="choosetemplate"
           v-on:submitinfo="submit"
+          v-on:submitpreview="submit_preview"
           v-if="templateChosen"
         />
       </div>
       <div class="pdfpane">
         <img src="./assets/logoec.png" />
-        <vue-pdf-embed
-          source="https://raw.githubusercontent.com/Shawn-Armstrong/Machine-Learning-Coursera/cf08f5f48285fbc7099a1de36c83a6f471cf21ed/BigTheta.pdf"
-        />
+        <vue-pdf-embed :source="source1" />
       </div>
     </div>
   </v-app>
@@ -55,9 +51,9 @@ export default {
         templateInfo: {
           number: '',
         },
-        source1:
-          'https://raw.githubusercontent.com/Shawn-Armstrong/Machine-Learning-Coursera/cf08f5f48285fbc7099a1de36c83a6f471cf21ed/BigTheta.pdf',
       },
+      source1:
+        'https://raw.githubusercontent.com/Shawn-Armstrong/Machine-Learning-Coursera/cf08f5f48285fbc7099a1de36c83a6f471cf21ed/BigTheta.pdf',
     };
   },
   methods: {
@@ -87,6 +83,22 @@ export default {
         fileLink.click();
       });
     },
+    submit_preview(personalInfo) {
+      this.cardInfo.personalInfo = personalInfo;
+      console.log('Submitting preview request...');
+
+      axios({
+        url: 'http://localhost:5000/api/preview_card',
+        method: 'POST',
+        responseType: 'json',
+        data: {
+          cardInfo: this.cardInfo,
+        },
+      }).then((response) => {
+        this.source1 = 'data:application/pdf;base64,' + response.data.pdfData;
+        console.log(this.source1);
+      });
+    },
     templatenum(templateInfo) {
       this.cardInfo.templateInfo = templateInfo;
       console.log(this.cardInfo.templateInfo);
@@ -110,7 +122,6 @@ export default {
 #app div {
 }
 .pdfpane {
-  border: 5px dotted red;
   width: 50%;
   align-items: center;
   justify-content: center;
@@ -124,10 +135,6 @@ export default {
   justify-content: center;
   height: auto;
   margin-left: 50px;
-}
-
-.vue-pdf-embed {
-  align: center;
 }
 </style>
 
