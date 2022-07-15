@@ -1,13 +1,16 @@
 [
     {   
         "id" : 1,
+        "font_size": {
+            "name": 14,
+            "detail": 6,
+            "company": 12
+        },
         "name": {
-            "size": 14,
             "x": 45,
             "y": 10
         },
         "detail": {
-            "size": 6,
             "phone_number": {
                 "x": 47,
                 "y": 31.5
@@ -26,7 +29,6 @@
             }
         },
         "company": {
-            "size": 12,
             "x": 20,
             "y": 27,
             "x_img": 20,
