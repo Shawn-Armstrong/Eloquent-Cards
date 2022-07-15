@@ -1,25 +1,31 @@
 <template>
-  <v-app>
-    <CardTemplates
-      v-on:choosetemplate="choosetemplate"
-      v-on:templatetype="templatenum"
-      v-if="!templateChosen"
-    />
-    <div class="d-flex flex-row mb-6 justify-center">
-      <div id="menu">
-        <UserForm
+  <div id="app">
+    <v-app>
+      <NavBar></NavBar>
+
+      <div class="mt-15">
+        <CardTemplates
           v-on:choosetemplate="choosetemplate"
-          v-on:submitinfo="submit"
-          v-on:submitpreview="submit_preview"
-          v-if="templateChosen"
+          v-on:templatetype="templatenum"
+          v-if="!templateChosen"
         />
       </div>
-      <div class="pdfpane">
-        <img src="./assets/logoec.png" />
-        <vue-pdf-embed :source="source1" />
+      <div class="d-flex flex-row mt-10 justify-center">
+        <div id="menu">
+          <UserForm
+            v-on:choosetemplate="choosetemplate"
+            v-on:submitinfo="submit"
+            v-on:submitpreview="submit_preview"
+            v-if="templateChosen"
+          />
+        </div>
+        <div class="pdfpane">
+          <img src="./assets/logoec.png" />
+          <vue-pdf-embed :source="source1" />
+        </div>
       </div>
-    </div>
-  </v-app>
+    </v-app>
+  </div>
 </template>
 
 <script>
@@ -27,6 +33,7 @@ import UserForm from './components/User-Form.vue';
 import CardTemplates from './components/Card-Templates.vue';
 import axios from 'axios';
 import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed';
+import NavBar from './components/Nav-Bar.vue';
 
 export default {
   name: 'App',
@@ -35,6 +42,7 @@ export default {
     UserForm,
     CardTemplates,
     VuePdfEmbed,
+    NavBar,
   },
   data() {
     return {
@@ -108,33 +116,12 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: auto;
-}
-
-#app div {
-}
 .pdfpane {
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  margin-left: 50px;
+  margin-left: 400px;
 }
+,
 .menu {
-  border: 1px solid grey;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-  height: auto;
-  margin-left: 50px;
+  margin-right: 20px;
 }
 </style>
 

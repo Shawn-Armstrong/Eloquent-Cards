@@ -48,13 +48,13 @@
         required
       ></v-text-field>
 
-      <v-btn color="blue" @click="back"> Back </v-btn>
+      <v-btn color="#d53953" @click="back"> Back </v-btn>
 
-      <v-btn color="blue" @click="reset"> Reset Form </v-btn>
+      <v-btn color="#d53953" @click="reset"> Reset Form </v-btn>
 
-      <v-btn color="blue" @click="submit"> Download Card </v-btn>
+      <v-btn color="#d53953" @click="submit"> Download Card </v-btn>
 
-      <v-btn color="blue" @click="submit_preview"> Preview Card </v-btn>
+      <v-btn color="#d53953" @click="submit_preview"> Preview Card </v-btn>
     </v-form>
   </section>
 </template>
@@ -121,7 +121,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
 }
 </style>
