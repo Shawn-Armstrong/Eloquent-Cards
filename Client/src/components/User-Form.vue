@@ -52,7 +52,9 @@
 
       <v-btn color="blue" @click="reset"> Reset Form </v-btn>
 
-      <v-btn color="blue" @click="submit"> DOWNLOAD CARD </v-btn>
+      <v-btn color="blue" @click="submit"> Download Card </v-btn>
+
+      <v-btn color="blue" @click="submit_preview"> Preview Card </v-btn>
     </v-form>
   </section>
 </template>
@@ -95,6 +97,10 @@ export default {
     submit() {
       console.log('child submit function');
       this.$emit('submitinfo', this.personalInfo);
+    },
+    submit_preview() {
+      console.log('child submit function');
+      this.$emit('submitpreview', this.personalInfo);
     },
     validate() {
       this.$refs.form.validate();

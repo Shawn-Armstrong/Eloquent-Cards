@@ -3,12 +3,13 @@ const app = express();
 const { jsPDF } = require('jspdf');
 var fs = require('fs');
 var cors = require('cors');
+const path = require('path');
 
-const font = require("./lib/Sen-Regular-normal.js");
+const font = require('./lib/Sen-Regular-normal.js');
 font.add_font(jsPDF);
-const CardGenerator = require("./lib/CardGenerator.js");
+const CardGenerator = require('./lib/CardGenerator.js');
 
-const tmpjson = require("./assets/Templates.json");
+const tmpjson = require('./assets/Templates.json');
 // Override CORS policy.
 app.use(cors());
 
@@ -48,7 +49,6 @@ app.post('/api/download_card', (req, res) => {
   var b_url = 'assets/' + req.body.cardInfo.templateInfo + 'b.jpg';
   var b_data = fs.readFileSync(b_url).toString('base64');
 
-
   let config = {
     name: req.body.cardInfo.personalInfo.name,
     phone_number: req.body.cardInfo.personalInfo.phoneNumber,
@@ -56,19 +56,19 @@ app.post('/api/download_card', (req, res) => {
     website: req.body.cardInfo.personalInfo.website,
     address: req.body.cardInfo.personalInfo.address,
     icon_data: '', //hard coded rn
-    company: req.body.cardInfo.personalInfo.companyName
+    company: req.body.cardInfo.personalInfo.companyName,
   };
 
   let template = {
-    text_json: tmpjson[0],   //0 is hard coded
+    text_json: tmpjson[0], //0 is hard coded
     front_imgdata: f_data,
-    back_imgdata: b_data
-  }
+    back_imgdata: b_data,
+  };
 
   //desired minimum size of pdf, generator will draw at 10, 10 by default
   const doc = new jsPDF({
     format: [110, 130],
-    unit: "mm"
+    unit: 'mm',
   });
 
   //load empty jspdf object and user inputs into generator
@@ -78,7 +78,50 @@ app.post('/api/download_card', (req, res) => {
 
   doc.save('response.pdf');
   return res.status(200).download('./response.pdf');
+});
 
+app.post('/api/preview_card', (req, res) => {
+  // Generate pdf
+  var f_url = 'assets/' + req.body.cardInfo.templateInfo + 'f.jpg';
+  var f_data = fs.readFileSync(f_url).toString('base64');
+
+  var b_url = 'assets/' + req.body.cardInfo.templateInfo + 'b.jpg';
+  var b_data = fs.readFileSync(b_url).toString('base64');
+
+  let config = {
+    name: req.body.cardInfo.personalInfo.name,
+    phone_number: req.body.cardInfo.personalInfo.phoneNumber,
+    email: req.body.cardInfo.personalInfo.email,
+    website: req.body.cardInfo.personalInfo.website,
+    address: req.body.cardInfo.personalInfo.address,
+    icon_data: '', //hard coded rn
+    company: req.body.cardInfo.personalInfo.companyName,
+  };
+
+  let template = {
+    text_json: tmpjson[0], //0 is hard coded
+    front_imgdata: f_data,
+    back_imgdata: b_data,
+  };
+
+  //desired minimum size of pdf, generator will draw at 10, 10 by default
+  const doc = new jsPDF({
+    format: [110, 130],
+    unit: 'mm',
+  });
+
+  //load empty jspdf object and user inputs into generator
+  let card_generator = new CardGenerator(doc, config);
+  //pass the template to draw
+  card_generator.draw(template);
+  doc.save('response.pdf');
+
+  // Convert pdf to base64
+  var tempFile = path.resolve(__dirname, './response.pdf');
+  var pdfBase64 = fs.readFileSync(tempFile).toString('base64');
+
+  res.setHeader('Content-Type', 'application/json');
+  return res.send(JSON.stringify({ pdfData: pdfBase64 }));
 });
 
 app.listen(5000, () => {
