@@ -60,28 +60,28 @@
 </template>
 
 <script>
-import Theme1 from "../assets/Card-theme-1-Back.jpg";
-import Theme2 from "../assets/Card theme-2-Back.jpg";
-import Theme3 from "../assets/card theme 3-Back2.jpg";
-import Theme1F from "../assets/Card theme-1-Front.jpg";
-import Theme2F from "../assets/Card theme-2-Front.jpg";
-import Theme3F from "../assets/card theme 3-front2.jpg";
+import Theme1 from '../assets/Card-theme-1-Back.jpg';
+import Theme2 from '../assets/Card theme-2-Back.jpg';
+import Theme3 from '../assets/card theme 3-Back2.jpg';
+import Theme1F from '../assets/Card theme-1-Front.jpg';
+import Theme2F from '../assets/Card theme-2-Front.jpg';
+import Theme3F from '../assets/card theme 3-front2.jpg';
 
 export default {
-  name: "Templates",
+  name: 'CardTemplates',
   data() {
     return {
       templates: [
-        { name: "Template 1", src: Theme1, theme: "1", src2: Theme1F },
-        { name: "Template 2", src: Theme2, theme: "2", src2: Theme2F },
-        { name: "Template 3", src: Theme3, theme: "3", src2: Theme3F },
+        { name: 'Template 1', src: Theme1, theme: '1', src2: Theme1F },
+        { name: 'Template 2', src: Theme2, theme: '2', src2: Theme2F },
+        { name: 'Template 3', src: Theme3, theme: '3', src2: Theme3F },
       ],
     };
   },
   methods: {
     Choice(theme) {
-      this.$emit("choosetemplate", true);
-      this.$emit("templatetype", theme);
+      this.$emit('choosetemplate', true);
+      this.$emit('templatetype', theme);
     },
   },
 };

@@ -1,29 +1,44 @@
 <template>
-  <div id="app">
-    <Form
-      v-on:choosetemplate="choosetemplate"
-      v-on:submitinfo="submit"
-      v-if="templateChosen"
-    />
-
-    <Templates
+  <v-app>
+    <CardTemplates
       v-on:choosetemplate="choosetemplate"
       v-on:templatetype="templatenum"
       v-if="!templateChosen"
     />
-  </div>
+    <div class="d-flex flex-row mb-6">
+      <div id="menu">
+        <!-- ## Removed from UserForm properties ##
+      v-if="templateChosen" 
+       -->
+        <UserForm
+          v-on:choosetemplate="choosetemplate"
+          v-on:submitinfo="submit"
+          v-if="templateChosen"
+        />
+      </div>
+      <div class="pdfpane">
+        <img src="./assets/logoec.png" />
+        <vue-pdf-embed
+          source="https://raw.githubusercontent.com/Shawn-Armstrong/Machine-Learning-Coursera/cf08f5f48285fbc7099a1de36c83a6f471cf21ed/BigTheta.pdf"
+        />
+      </div>
+    </div>
+  </v-app>
 </template>
 
 <script>
-import Templates from './components/Templates.vue';
-import Form from './components/Form.vue';
+import UserForm from './components/User-Form.vue';
+import CardTemplates from './components/Card-Templates.vue';
 import axios from 'axios';
+import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed';
 
 export default {
   name: 'App',
+
   components: {
-    Templates,
-    Form,
+    UserForm,
+    CardTemplates,
+    VuePdfEmbed,
   },
   data() {
     return {
@@ -40,6 +55,8 @@ export default {
         templateInfo: {
           number: '',
         },
+        source1:
+          'https://raw.githubusercontent.com/Shawn-Armstrong/Machine-Learning-Coursera/cf08f5f48285fbc7099a1de36c83a6f471cf21ed/BigTheta.pdf',
       },
     };
   },
@@ -80,6 +97,42 @@ export default {
 
 <style>
 #app {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: auto;
+}
+
+#app div {
+}
+.pdfpane {
+  border: 5px dotted red;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-left: 50px;
+}
+.menu {
+  border: 1px solid grey;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-left: 50px;
+}
+
+.vue-pdf-embed {
+  align: center;
+}
+</style>
+
+<!-- <style>
+#app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -87,4 +140,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
+</style> -->

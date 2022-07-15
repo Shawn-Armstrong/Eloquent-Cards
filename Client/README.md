@@ -1,27 +1,24 @@
-# CLIENT INSTRUCTIONS
+# hello-world
 
-## Requirements
+## Project setup
+```
+npm install
+```
 
-- Node v16.15.1
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-## Steps
+### Compiles and minifies for production
+```
+npm run build
+```
 
-1. Open the `Client` directory inside a terminal.
-2. Execute `npm install --force`.
-3. Execute `npm run serve`.
-4. Open Google Chrome and navigate to `http://localhost:8080/`
+### Lints and fixes files
+```
+npm run lint
+```
 
-- After the preceding steps a development server will host the front-end logic on port 8080.
-
-## Errors
-
-- If the port is already occupied run command `npx kill-port 8080` on any terminal.
-- The current `package.json` is experiencing build issues related to the vuetify library due to an npm update. Ignore the warnings issued by npm after `npm install --force` for the time being.
-
-## Notes
-
-- N/A
-
-## USAGE
-
-[comment]: ![Example](https://i.imgur.com/f5tJJ0z.gif)#
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
