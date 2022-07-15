@@ -12,6 +12,9 @@
       v-on:templatetype="templatenum"
       v-if="!templateChosen"
     />
+    <div class="column">
+        <simple-upload />
+    </div>
   </div>
 </template>
 
@@ -20,6 +23,7 @@ import Templates from './components/Templates.vue';
 import Form from './components/Form.vue';
 import Sidebar from './components/sidebar/Sidebar.vue';
 import { sidebarWidth } from '@/components/sidebar/state';
+import SimpleUpload from './components/SimpleUpload.vue';
 import axios from 'axios';
 
 export default {
@@ -28,6 +32,7 @@ export default {
     Templates,
     Form,
     Sidebar,
+    SimpleUpload
   },
   setup() {
     return { sidebarWidth }

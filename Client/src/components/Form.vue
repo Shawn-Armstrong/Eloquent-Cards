@@ -38,6 +38,7 @@
       :counter="26"
       :rules="websiteRules"
       label="Website"
+      required
     ></v-text-field>
 
     <v-text-field
@@ -102,7 +103,7 @@ export default {
       ],
       titleRules: [
         (v) => !!v || "Job Title is required",
-        (v) => (v && v.length <= 20) || "Title must be less than 20 characters",
+        (v) => (v && v.length <= 20) || "Job Title must be less than 20 characters",
       ]
     };
   },

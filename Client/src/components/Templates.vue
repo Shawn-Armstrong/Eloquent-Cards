@@ -2,13 +2,13 @@
   <v-app>
     <div class="templates">
       <h1 class="subheading">Choose a Template</h1>
-      <v-container class="card-templates">
+      <v-container class="card-templates" style="width: 97rem;">
         <v-layout row wrap justify-center>
           <v-flex
-            xs12
-            sm6
-            md4
-            lg3
+            xs13
+            sm7
+            md6
+            lg4
             v-for="template in templates"
             :key="template.name"
           >
@@ -90,7 +90,7 @@ export default {
 <style>
 .flip-card-container {
   display: flex;
-  width: 405px;
+  width: 400px;
   height: 240px;
   perspective: 1000px;
 }
@@ -121,5 +121,9 @@ export default {
 v-img {
   width: auto;
   height: auto;
+}
+
+.templates {
+  margin-left: 60px;
 }
 </style>
