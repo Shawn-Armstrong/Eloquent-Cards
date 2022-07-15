@@ -31,7 +31,7 @@
         </div>
 
         <div class="field">
-            <button class="button is-info"> Send </button>
+            <button class="button is-info is-centered"> Send </button>
         </div>
 
     </form>
@@ -52,9 +52,10 @@ export default{
     methods: {
         selectFile() {
             const file = this.$refs.file.files[0];
-            const allowedTypes = ["image/jpeg", "image/png"];
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
             const MAX_SIZE = 200000;
             const tooLarge = file.size > MAX_SIZE;
+
             if(allowedTypes.includes(file.type) && !tooLarge) {
                 this.file = file;
                 this.error = false;
@@ -81,3 +82,9 @@ export default{
     }
 }
 </script>
+
+<style scoped>
+.file-name {
+    color: gray;
+}
+</style>
