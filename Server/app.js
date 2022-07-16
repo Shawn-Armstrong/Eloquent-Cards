@@ -7,6 +7,7 @@ const path = require('path');
 
 const font = require('./lib/Sen-Regular-normal.js');
 font.add_font(jsPDF);
+
 const CardGenerator = require('./lib/CardGenerator.js');
 
 const tmpjson = require('./assets/Templates.json');
@@ -49,6 +50,9 @@ app.post('/api/download_card', (req, res) => {
   var b_url = 'assets/' + req.body.cardInfo.templateInfo + 'b.jpg';
   var b_data = fs.readFileSync(b_url).toString('base64');
 
+  var t_url = 'tp2.jpg';
+  var t_data = fs.readFileSync(t_url).toString('base64');
+
   let config = {
     name: req.body.cardInfo.personalInfo.name,
     phone_number: req.body.cardInfo.personalInfo.phoneNumber,
@@ -88,6 +92,9 @@ app.post('/api/preview_card', (req, res) => {
   var b_url = 'assets/' + req.body.cardInfo.templateInfo + 'b.jpg';
   var b_data = fs.readFileSync(b_url).toString('base64');
 
+  var t_url = 'tp2.jpg';
+  var t_data = fs.readFileSync(t_url).toString('base64');
+
   let config = {
     name: req.body.cardInfo.personalInfo.name,
     phone_number: req.body.cardInfo.personalInfo.phoneNumber,
@@ -100,7 +107,7 @@ app.post('/api/preview_card', (req, res) => {
 
   let template = {
     text_json: tmpjson[0], //0 is hard coded
-    front_imgdata: f_data,
+    front_imgdata: t_data,
     back_imgdata: b_data,
   };
 
@@ -112,6 +119,7 @@ app.post('/api/preview_card', (req, res) => {
 
   //load empty jspdf object and user inputs into generator
   let card_generator = new CardGenerator(doc, config);
+  //console.log(card_generator.input_stats());
   //pass the template to draw
   card_generator.draw(template);
   doc.save('response.pdf');
