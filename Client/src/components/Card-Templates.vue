@@ -15,9 +15,10 @@
             <v-hover>
               <template v-slot="{ hover }">
                 <v-card
-                  class="text-xs-center ma-3"
+                  class="text-xs-center ma-6"
                   :elevation="hover ? 15 : 6"
-                  color="#fff"
+                  flat
+                  style="background-color"
                   :src="template.src"
                 >
                   <v-responsive class="pt-0">
@@ -38,11 +39,11 @@
                     </div>
                   </v-card-text>
                   <v-card-actions>
-                    <v-layout>
+                    <v-layout justify-center>
                       <v-btn
-                        flat
+                        rounded
                         large
-                        color="blue"
+                        color="#d53953"
                         @click="Choice(template.theme)"
                       >
                         Choose</v-btn

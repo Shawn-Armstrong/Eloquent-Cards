@@ -24,6 +24,9 @@ app.post('/api/download_card', (req, res) => {
       'Name: ' +
       req.body.cardInfo.personalInfo.name +
       '\n' +
+      'Title: ' +
+      req.body.cardInfo.personalInfo.title +
+      '\n' +
       'Company: ' +
       req.body.cardInfo.personalInfo.companyName +
       '\n' +
