@@ -55,6 +55,7 @@ export default {
           phoneNumber: '',
           address: '',
           website: '',
+          title: '',
         },
         templateInfo: {
           number: '',

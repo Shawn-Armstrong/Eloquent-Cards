@@ -10,6 +10,14 @@
       ></v-text-field>
 
       <v-text-field
+        v-model="personalInfo.title"
+        :counter="26"
+        :rules="titleRules"
+        label="Job Title"
+        required
+      ></v-text-field>
+
+      <v-text-field
         v-model="personalInfo.companyName"
         :counter="10"
         :rules="companynameRules"
@@ -48,13 +56,23 @@
         required
       ></v-text-field>
 
-      <v-btn color="#d53953" @click="back"> Back </v-btn>
+      <div class="mt-4">
+        <v-btn color="#d53953" @click="back" class="mx-3">
+          <v-icon>mdi-arrow-left-bold-outline</v-icon> &nbsp; Back
+        </v-btn>
 
-      <v-btn color="#d53953" @click="reset"> Reset Form </v-btn>
+        <v-btn color="#d53953" @click="reset" class="mx-3">
+          <v-icon>mdi-trash-can-outline</v-icon> &nbsp; Reset Form
+        </v-btn>
 
-      <v-btn color="#d53953" @click="submit"> Download Card </v-btn>
+        <v-btn color="#d53953" @click="submit" class="mx-3">
+          <v-icon>mdi-cloud-download-outline</v-icon> &nbsp; Download Card
+        </v-btn>
 
-      <v-btn color="#d53953" @click="submit_preview"> Preview Card </v-btn>
+        <v-btn color="#d53953" @click="submit_preview" class="mx-3">
+          <v-icon>mdi-eye-outline</v-icon> &nbsp; Preview Card
+        </v-btn>
+      </div>
     </v-form>
   </section>
 </template>
@@ -72,6 +90,7 @@ export default {
         phoneNumber: '',
         companyName: '',
         website: '',
+        title: '',
       },
       nameRules: [
         (v) => !!v || 'Name is required',
@@ -87,6 +106,11 @@ export default {
       websiteRules: [
         (v) =>
           (v && v.length <= 10) || 'Website must be less than 10 characters',
+      ],
+      titleRules: [
+        (v) => !!v || 'Job Title is required',
+        (v) =>
+          (v && v.length <= 20) || 'Job Title must be less than 20 characters',
       ],
     };
   },
