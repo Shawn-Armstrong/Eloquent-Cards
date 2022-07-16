@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <v-sheet id="menu" class="pa-6 rounded-xl">
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         v-model="personalInfo.name"
@@ -74,7 +74,7 @@
         </v-btn>
       </div>
     </v-form>
-  </section>
+  </v-sheet>
 </template>
 
 <script>
@@ -146,5 +146,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: white;
+}
+.menu {
+  border-radius: 50px;
 }
 </style>
