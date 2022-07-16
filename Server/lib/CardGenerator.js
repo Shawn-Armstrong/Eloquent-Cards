@@ -14,6 +14,7 @@ class CardGenerator {
     constructor(doc, config){
         this.doc = doc;
         this.config = config;
+        this._warning = this._input_test();
     }
 
     /**
@@ -28,6 +29,10 @@ class CardGenerator {
       return this._draw_template(template);
     }
 
+    input_stats(){
+      return this._warning;
+    }
+
     _draw_template(template){
       const X = 10; const Y = 10; //Top left cords
       let doc = this.doc; let config = this.config;
@@ -36,17 +41,13 @@ class CardGenerator {
       doc.addImage(template.front_imgdata, 'JPEG', X, Y, 90, 50);
       doc.addImage(template.back_imgdata, 'JPEG', X, Y+60, 90, 50);
       //name
+
       doc.setFont("Sen-Regular","normal");
+      //doc.setFont("SourceHanSansSC-VF","normal");
       doc.setFontSize(tmp.font_size.name);
       doc.text(config.name, X + tmp.name.x, Y + tmp.name.y, {maxWidth: 35});
+
       //detail
-      /*
-      doc.setFontSize(tmp.font_size.detail);
-      doc.text(config.phone_number, X + tmp.detail.phone_number.x,  Y + tmp.detail.phone_number.y,  {maxWidth: 30}); 
-      doc.text(config.email,        X + tmp.detail.email.x,         Y + tmp.detail.email.y,         {maxWidth: 30});
-      doc.text(config.website,      X + tmp.detail.website.x,       Y + tmp.detail.website.y,       {maxWidth: 30});
-      doc.text(config.address,      X + tmp.detail.address.x,       Y + tmp.detail.address.y,       {maxWidth: 30});
-      */
       doc.setFontSize(tmp.font_size.detail);
       for(const section in tmp.detail){
         doc.text(config[section], X + tmp.detail[section].x,  Y + tmp.detail[section].y,  {maxWidth: 30}); 
@@ -64,8 +65,39 @@ class CardGenerator {
       return doc;
     }
 
-    _test(){
-        console.log("hello, here I am!");
+    _input_test(){
+      return {
+        VALID_STRING: this._string_test(),
+        ASCII_ONLY: this._ascii_test(),
+        NECESSARY_INFO: this._optional_test()
+      }
+    }
+    _string_test(){
+      for(const section in this.config){
+        if(typeof this.config[section] != 'string'){
+          return false;
+        }
+      }
+      return true;
+    }
+    _optional_test(){
+      for(const section in this.config){
+        let isEmpty = /^\s*$/.test(this.config[section])
+        if(isEmpty && (section != 'icon_data') && (section != 'subtitle')){
+          return false;
+        }
+      }
+      return true;
+    }
+    _ascii_test(){
+        for(const section in this.config){
+          let isAscii = /^[\x00-\x7F]*$/.test(this.config[section])
+          if(!isAscii){
+            console.log("Section: [" + section + "] contains non-Ascii character: " +  this.config[section]);
+            return false;
+          }
+        }
+        return true;
     }
 }
 module.exports = CardGenerator;
