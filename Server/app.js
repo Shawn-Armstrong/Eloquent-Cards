@@ -110,7 +110,7 @@ app.post('/api/preview_card', (req, res) => {
 
   let template = {
     text_json: tmpjson[0], //0 is hard coded
-    front_imgdata: t_data,
+    front_imgdata: f_data,
     back_imgdata: b_data,
   };
 
