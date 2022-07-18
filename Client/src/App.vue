@@ -1,25 +1,27 @@
 <template>
   <div id="app">
     <v-app>
-      <NavBar></NavBar>
-
+      <HomePage
+      v-on:choosepage="choosepage"
+      v-if="pageChosen==1"/>
+      <NavBar/>
       <div class="mt-15">
         <CardTemplates
-          v-on:choosetemplate="choosetemplate"
+          v-on:choosepage="choosepage"
           v-on:templatetype="templatenum"
-          v-if="!templateChosen"
+          v-if="pageChosen==2"
         />
       </div>
       <div class="d-flex flex-row mt-10 justify-center">
-        <div id="menu">
+        <div pa-md-4 id="menu">
           <UserForm
-            v-on:choosetemplate="choosetemplate"
+            v-on:choosepage="choosepage"
             v-on:submitinfo="submit"
             v-on:submitpreview="submit_preview"
-            v-if="templateChosen"
+            v-if="pageChosen==3"
           />
         </div>
-        <div class="pdfpane">
+        <div v-if="pageChosen==3" class="pdfpane">
           <img src="./assets/logoec.png" />
           <vue-pdf-embed :source="source1" />
         </div>
@@ -34,6 +36,8 @@ import CardTemplates from './components/Card-Templates.vue';
 import axios from 'axios';
 import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed';
 import NavBar from './components/Nav-Bar.vue';
+import HomePage from './components/Home-Page.vue';
+
 
 export default {
   name: 'App',
@@ -43,10 +47,12 @@ export default {
     CardTemplates,
     VuePdfEmbed,
     NavBar,
+    HomePage,
+
   },
   data() {
     return {
-      templateChosen: false,
+      pageChosen: 1, //1: home page, 2: template page, 3: form page
       cardInfo: {
         personalInfo: {
           name: '',
@@ -66,8 +72,8 @@ export default {
     };
   },
   methods: {
-    choosetemplate(variable) {
-      this.templateChosen = variable;
+    choosepage(variable) {
+      this.pageChosen = variable;
     },
     submit(personalInfo) {
       console.log('parent submit function');
@@ -118,11 +124,14 @@ export default {
 
 <style>
 .pdfpane {
-  margin-left: 400px;
+  margin-left: 100px;
+  width: 1000px;
+  margin-right: 100px
 }
-,
+
 .menu {
-  margin-right: 20px;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 </style>
 

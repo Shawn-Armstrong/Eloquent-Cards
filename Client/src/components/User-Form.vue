@@ -3,7 +3,7 @@
     <v-form ref="form" v-model="valid" lazy-validation>
       <v-text-field
         v-model="personalInfo.name"
-        :counter="10"
+        :counter="26"
         :rules="nameRules"
         label="Name"
         required
@@ -19,7 +19,7 @@
 
       <v-text-field
         v-model="personalInfo.companyName"
-        :counter="10"
+        :counter="26"
         :rules="companynameRules"
         label="Company Name"
         required
@@ -27,7 +27,7 @@
 
       <v-text-field
         v-model="personalInfo.email"
-        :counter="10"
+        :counter="26"
         :rules="emailRules"
         label="E-mail"
         required
@@ -35,14 +35,14 @@
 
       <v-text-field
         v-model="personalInfo.website"
-        :counter="10"
+        :counter="26"
         :rules="websiteRules"
         label="Website"
       ></v-text-field>
 
       <v-text-field
         v-model="personalInfo.phoneNumber"
-        :counter="10"
+        :counter="26"
         :rules="phoneNumberRules"
         label="Phone Number"
         required
@@ -50,26 +50,26 @@
 
       <v-text-field
         v-model="personalInfo.address"
-        :counter="10"
+        :counter="26"
         :rules="addressRules"
         label="Address"
         required
       ></v-text-field>
 
       <div class="mt-4">
-        <v-btn color="#d53953" @click="back" class="mx-3">
+        <v-btn color="#bf2e2e" @click="back" class="mx-3">
           <v-icon>mdi-arrow-left-bold-outline</v-icon> &nbsp; Back
         </v-btn>
 
-        <v-btn color="#d53953" @click="reset" class="mx-3">
+        <v-btn color="#bf2e2e" @click="reset" class="mx-3">
           <v-icon>mdi-trash-can-outline</v-icon> &nbsp; Reset Form
         </v-btn>
 
-        <v-btn color="#d53953" @click="submit" class="mx-3">
+        <v-btn color="#bf2e2e" @click="submit" class="mx-3">
           <v-icon>mdi-cloud-download-outline</v-icon> &nbsp; Download Card
         </v-btn>
 
-        <v-btn color="#d53953" @click="submit_preview" class="mx-3">
+        <v-btn color="#bf2e2e" @click="submit_preview" class="mx-3">
           <v-icon>mdi-eye-outline</v-icon> &nbsp; Preview Card
         </v-btn>
       </div>
@@ -116,11 +116,14 @@ export default {
   },
   methods: {
     back() {
-      this.$emit('choosetemplate', false);
+      this.$emit('choosepage', 2);
     },
     submit() {
       console.log('child submit function');
-      this.$emit('submitinfo', this.personalInfo);
+      this.$refs.form.validate();
+      if(this.valid==true){
+        this.$emit('submitinfo', this.personalInfo);
+      }
     },
     submit_preview() {
       console.log('child submit function');

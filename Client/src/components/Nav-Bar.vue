@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="#201b1c" dark>
+  <v-app-bar app color="black" dark hide-on-scroll>
     <div class="d-flex align-center">
       <v-img
         alt="eloquentcards logo"
@@ -11,25 +11,33 @@
     </div>
 
     <v-spacer></v-spacer>
-
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      text
+  <router-link
+    to="/home"
+    tag="button"
+    >
+    <v-btn 
+    flat
+    to="/about"
+    text
+    value="about"
     >
       <span class="mr-2">Home</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
-
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      text
+  </router-link>
+<router-link to="/templates">
+  <v-btn
+    flat
+     href="/about"
+    text
+    value="about"
     >
       <span class="mr-2">The Developers</span>
       <v-icon>mdi-account-group</v-icon>
     </v-btn>
 
+</router-link>
+    
     <v-btn
       href="https://github.com/vuetifyjs/vuetify/releases/latest"
       target="_blank"

@@ -41,20 +41,24 @@
                   <v-card-actions>
                     <v-layout justify-center>
                       <v-btn
-                        rounded
+                        outlined
                         large
-                        color="#d53953"
+                        color="#bf2e2e"
+                         elevation="5"
                         @click="Choice(template.theme)"
                       >
                         Choose</v-btn
                       >
                     </v-layout>
+                    
                   </v-card-actions>
                 </v-card>
               </template>
             </v-hover>
           </v-flex>
         </v-layout>
+        <v-btn class="butt" @click="Back">
+        <v-icon>mdi-arrow-left-bold-outline</v-icon> &nbsp; Back</v-btn>
       </v-container>
     </div>
   </v-app>
@@ -81,9 +85,12 @@ export default {
   },
   methods: {
     Choice(theme) {
-      this.$emit('choosetemplate', true);
+      this.$emit('choosepage', 3);
       this.$emit('templatetype', theme);
     },
+    Back(){
+      this.$emit('choosepage', 1);
+    }
   },
 };
 </script>
@@ -103,17 +110,16 @@ export default {
   transform-style: preserve-3d;
 }
 .flip-card-container:hover .flip-card {
-  transform: rotateY(180deg); /* <=>  rotateY(.5turn) */
+  transform: rotateY(180deg);
 }
-/* Position the front and back side */
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  /* border-radius: 0.5rem; */
 }
 
 .flip-card-back {
@@ -123,5 +129,16 @@ export default {
 v-img {
   width: auto;
   height: auto;
+}
+
+.subheading {
+  margin-top: 40px;
+}
+
+.card-templates {
+  margin-top: 20px;
+}
+.butt{
+  margin-top: 70px;
 }
 </style>

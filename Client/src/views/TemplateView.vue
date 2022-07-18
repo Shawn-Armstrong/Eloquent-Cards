@@ -10,7 +10,7 @@
 
 <script>
 import Templates from "../components/Templates.vue";
-import Form from "../components/Shawn_Form.vue";
+import Form from "../components/User_Form.vue";
 
 
 export default {
