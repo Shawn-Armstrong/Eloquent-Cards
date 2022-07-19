@@ -1,5 +1,6 @@
 import HomeView from './views/HomeView.vue';
 import AboutUs from './views/AboutView.vue';
+import GenerateCard from './views/GenerateCard.vue';
 
 export default [
   {
@@ -9,5 +10,9 @@ export default [
   {
     path: '/about',
     component: AboutUs,
+  },
+  {
+    path: '/generate',
+    component: GenerateCard,
   },
 ];

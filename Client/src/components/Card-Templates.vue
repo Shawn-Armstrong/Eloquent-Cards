@@ -44,21 +44,18 @@
                         outlined
                         large
                         color="#bf2e2e"
-                         elevation="5"
+                        elevation="5"
                         @click="Choice(template.theme)"
                       >
                         Choose</v-btn
                       >
                     </v-layout>
-                    
                   </v-card-actions>
                 </v-card>
               </template>
             </v-hover>
           </v-flex>
         </v-layout>
-        <v-btn class="butt" @click="Back">
-        <v-icon>mdi-arrow-left-bold-outline</v-icon> &nbsp; Back</v-btn>
       </v-container>
     </div>
   </v-app>
@@ -88,9 +85,9 @@ export default {
       this.$emit('choosepage', 3);
       this.$emit('templatetype', theme);
     },
-    Back(){
+    Back() {
       this.$emit('choosepage', 1);
-    }
+    },
   },
 };
 </script>
@@ -138,7 +135,7 @@ v-img {
 .card-templates {
   margin-top: 20px;
 }
-.butt{
+.butt {
   margin-top: 70px;
 }
 </style>
