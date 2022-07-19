@@ -1,0 +1,86 @@
+[
+    {   
+        "id" : 1,
+        "font_size": {
+            "name": 14,
+            "detail": 6,
+            "company": 12
+        },
+        "name": {
+            "x": 45,
+            "y": 10
+        },
+        "detail": {
+            "phone_number": {
+                "x": 47,
+                "y": 31.5
+            },
+            "email": {
+                "x": 47,
+                "y": 34
+            },
+            "website": {
+                "x": 47,
+                "y": 37
+            },
+            "address": {
+                "x": 47,
+                "y": 40
+            }
+        },
+        "company": {
+            "x": 20,
+            "y": 27,
+            "x_img": 20,
+            "y_img": 37
+        },
+        "icon_data":{
+            "x": 11.5,
+            "y": 11.5,
+            "w": 20,
+            "h": 20
+        }
+    },
+    {   
+        "id" : 2,
+        "font_size": {
+            "name": 14,
+            "detail": 6,
+            "company": 12
+        },
+        "name": {
+            "x": 45,
+            "y": 10
+        },
+        "detail": {
+            "phone_number": {
+                "x": 47,
+                "y": 31.5
+            },
+            "email": {
+                "x": 47,
+                "y": 34
+            },
+            "website": {
+                "x": 47,
+                "y": 37
+            },
+            "address": {
+                "x": 47,
+                "y": 40
+            }
+        },
+        "company": {
+            "x": 20,
+            "y": 27,
+            "x_img": 20,
+            "y_img": 37
+        },
+        "icon_data":{
+            "x": 11.5,
+            "y": 11.5,
+            "w": 20,
+            "h": 20
+        }
+    }
+]

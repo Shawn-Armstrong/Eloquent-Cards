@@ -19,4 +19,4 @@
 
 ## Notes
 
-- The current system setup is a true [client / server model](https://en.wikipedia.org/wiki/Client%E2%80%93server_model). The server and client's resoruces are completely indepedent from each other and only interact via HTTP requests.
+- The current Server abstraction is just a prototype. Ideally the generation functionality will be partitioned into its own JavaScript file and each template will be handled independently inside its own function.
