@@ -1,10 +1,10 @@
-import HomePage from './components/Home-Page.vue';
+import HomeView from './views/HomeView.vue';
 import AboutUs from './views/AboutView.vue';
 
 export default [
   {
     path: '/',
-    component: HomePage,
+    component: HomeView,
   },
   {
     path: '/about',
