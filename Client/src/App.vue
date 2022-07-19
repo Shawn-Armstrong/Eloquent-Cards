@@ -1,54 +1,26 @@
 <template>
-  <div id="app">
-    <v-app>
-      <HomePage
-      v-on:choosepage="choosepage"
-      v-if="pageChosen==1"/>
-      <NavBar/>
-      <div class="mt-15">
-        <CardTemplates
-          v-on:choosepage="choosepage"
-          v-on:templatetype="templatenum"
-          v-if="pageChosen==2"
-        />
-      </div>
-      <div class="d-flex flex-row mt-10 justify-center">
-        <div pa-md-4 id="menu">
-          <UserForm
-            v-on:choosepage="choosepage"
-            v-on:submitinfo="submit"
-            v-on:submitpreview="submit_preview"
-            v-if="pageChosen==3"
-          />
-        </div>
-        <div v-if="pageChosen==3" class="pdfpane">
-          <img src="./assets/logoec.png" />
-          <vue-pdf-embed :source="source1" />
-        </div>
-      </div>
-    </v-app>
-  </div>
+  <v-app>
+    <router-view></router-view>
+  </v-app>
 </template>
 
 <script>
-import UserForm from './components/User-Form.vue';
-import CardTemplates from './components/Card-Templates.vue';
+// import UserForm from './components/User-Form.vue';
+// import CardTemplates from './components/Card-Templates.vue';
 import axios from 'axios';
-import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed';
-import NavBar from './components/Nav-Bar.vue';
-import HomePage from './components/Home-Page.vue';
-
+// import VuePdfEmbed from 'vue-pdf-embed/dist/vue2-pdf-embed';
+// import NavBar from './components/Nav-Bar.vue';
+// import HomePage from './components/Home-Page.vue';
 
 export default {
   name: 'App',
 
   components: {
-    UserForm,
-    CardTemplates,
-    VuePdfEmbed,
-    NavBar,
-    HomePage,
-
+    // UserForm,
+    // CardTemplates,
+    // VuePdfEmbed,
+    // NavBar,
+    // HomePage,
   },
   data() {
     return {
@@ -126,7 +98,7 @@ export default {
 .pdfpane {
   margin-left: 100px;
   width: 1000px;
-  margin-right: 100px
+  margin-right: 100px;
 }
 
 .menu {
