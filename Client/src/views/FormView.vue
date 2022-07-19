@@ -1,19 +1,26 @@
 <template>
-  <div>
-    <NavBar></NavBar>
-    <HomePage></HomePage>
-  </div>
+  <Shawn_Form />
 </template>
 
 <script>
-import NavBar from '@/components/Nav-Bar.vue';
-import HomePage from '@/components/Home-Page.vue';
-
+import Shawn_Form from '../components/Shawn_Form.vue';
 export default {
-  name: 'HomeView',
-  components: {
-    NavBar,
-    HomePage,
-  },
+  name: 'App',
+  components: { Shawn_Form },
 };
 </script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+body {
+  margin: 0;
+  background: #eee;
+}
+</style>

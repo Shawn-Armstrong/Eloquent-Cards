@@ -96,7 +96,7 @@ export default {
         {
           id:1,
           src: require('../assets/Shawn.jpeg'),
-          name:"Sean",
+          name:"Shawn",
           title: 'Product Owner',
         },
           {
@@ -119,7 +119,7 @@ export default {
         },
         {
           id:5,
-          src: require('../assets/Steven.jpg'),
+          src: require('../assets/Leo.jpg'),
           name:"Leo",
           title: 'Team Member',
         }

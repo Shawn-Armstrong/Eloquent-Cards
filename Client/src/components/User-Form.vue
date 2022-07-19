@@ -1,80 +1,81 @@
 <template>
-  <v-sheet id="menu" class="pa-6 rounded-xl">
-    <v-form ref="form" v-model="valid" lazy-validation>
-      <v-text-field
-        v-model="personalInfo.name"
-        :counter="26"
-        :rules="nameRules"
-        label="Name"
-        required
-      ></v-text-field>
+  <v-container
+    fluid
+    style=" mt-10 justify-center margin: 0px; padding: 0px; width: 80%"
+  >
+    <v-sheet id="menu" class="pa-6 rounded-xl">
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field
+          v-model="personalInfo.name"
+          :counter="26"
+          :rules="nameRules"
+          label="Name"
+          required
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.title"
-        :counter="26"
-        :rules="titleRules"
-        label="Job Title"
-        required
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.title"
+          :counter="26"
+          :rules="titleRules"
+          label="Job Title"
+          required
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.companyName"
-        :counter="26"
-        :rules="companynameRules"
-        label="Company Name"
-        required
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.companyName"
+          :counter="26"
+          :rules="companynameRules"
+          label="Company Name"
+          required
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.email"
-        :counter="26"
-        :rules="emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.email"
+          :counter="26"
+          :rules="emailRules"
+          label="E-mail"
+          required
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.website"
-        :counter="26"
-        :rules="websiteRules"
-        label="Website"
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.website"
+          :counter="26"
+          :rules="websiteRules"
+          label="Website"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.phoneNumber"
-        :counter="26"
-        :rules="phoneNumberRules"
-        label="Phone Number"
-        required
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.phoneNumber"
+          :counter="26"
+          :rules="phoneNumberRules"
+          label="Phone Number"
+          required
+        ></v-text-field>
 
-      <v-text-field
-        v-model="personalInfo.address"
-        :counter="26"
-        :rules="addressRules"
-        label="Address"
-        required
-      ></v-text-field>
+        <v-text-field
+          v-model="personalInfo.address"
+          :counter="26"
+          :rules="addressRules"
+          label="Address"
+          required
+        ></v-text-field>
 
-      <div class="mt-4">
-        <v-btn color="#bf2e2e" @click="back" class="mx-3">
-          <v-icon>mdi-arrow-left-bold-outline</v-icon> &nbsp; Back
-        </v-btn>
+        <div class="mt-4">
+          <v-btn color="#bf2e2e" @click="reset" class="mx-3">
+            <v-icon>mdi-trash-can-outline</v-icon> &nbsp; Reset Form
+          </v-btn>
 
-        <v-btn color="#bf2e2e" @click="reset" class="mx-3">
-          <v-icon>mdi-trash-can-outline</v-icon> &nbsp; Reset Form
-        </v-btn>
+          <v-btn color="#bf2e2e" @click="submit" class="mx-3">
+            <v-icon>mdi-cloud-download-outline</v-icon> &nbsp; Download Card
+          </v-btn>
 
-        <v-btn color="#bf2e2e" @click="submit" class="mx-3">
-          <v-icon>mdi-cloud-download-outline</v-icon> &nbsp; Download Card
-        </v-btn>
-
-        <v-btn color="#bf2e2e" @click="submit_preview" class="mx-3">
-          <v-icon>mdi-eye-outline</v-icon> &nbsp; Preview Card
-        </v-btn>
-      </div>
-    </v-form>
-  </v-sheet>
+          <v-btn color="#bf2e2e" @click="submit_preview" class="mx-3">
+            <v-icon>mdi-eye-outline</v-icon> &nbsp; Preview Card
+          </v-btn>
+        </div>
+      </v-form>
+    </v-sheet>
+  </v-container>
 </template>
 
 <script>
@@ -121,7 +122,7 @@ export default {
     submit() {
       console.log('child submit function');
       this.$refs.form.validate();
-      if(this.valid==true){
+      if (this.valid == true) {
         this.$emit('submitinfo', this.personalInfo);
       }
     },
