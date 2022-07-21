@@ -3,10 +3,6 @@ import App from './App.vue';
 import vuetify from './plugins/vuetify';
 import VueRouter from 'vue-router';
 import Routes from './routes.js';
-<<<<<<< HEAD
-=======
-
->>>>>>> routing
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
