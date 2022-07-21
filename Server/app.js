@@ -1,18 +1,16 @@
 const express = require('express');
 const app = express();
-const { jsPDF } = require('jspdf');
+const path = require('path');
 var fs = require('fs');
 var cors = require('cors');
-const path = require('path');
-
+const { jsPDF } = require('jspdf');
 const font = require('./lib/Sen-Regular-normal.js');
-font.add_font(jsPDF);
-
+const tmpjson = require('./assets/Templates.json');
 const CardGenerator = require('./lib/CardGenerator.js');
 
-const tmpjson = require('./assets/Templates.json');
-// Override CORS policy.
 app.use(cors());
+
+font.add_font(jsPDF);
 
 // parse form data
 app.use(express.urlencoded({ extended: false }));

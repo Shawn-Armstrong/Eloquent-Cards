@@ -82,11 +82,7 @@ export default {
   },
   methods: {
     Choice(theme) {
-      this.$emit('choosepage', 3);
       this.$emit('templatetype', theme);
-    },
-    Back() {
-      this.$emit('choosepage', 1);
     },
   },
 };

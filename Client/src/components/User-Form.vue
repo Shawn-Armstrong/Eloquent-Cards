@@ -7,7 +7,7 @@
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
           v-model="personalInfo.name"
-          :counter="26"
+          :counter="20"
           :rules="nameRules"
           label="Name"
           required
@@ -15,7 +15,7 @@
 
         <v-text-field
           v-model="personalInfo.title"
-          :counter="26"
+          :counter="20"
           :rules="titleRules"
           label="Job Title"
           required
@@ -39,7 +39,7 @@
 
         <v-text-field
           v-model="personalInfo.website"
-          :counter="26"
+          :counter="20"
           :rules="websiteRules"
           label="Website"
         ></v-text-field>
@@ -81,9 +81,11 @@
 <script>
 export default {
   name: 'UserForm',
+
   data() {
     return {
       valid: true,
+
       personalInfo: {
         name: '',
         company: '',
@@ -93,21 +95,25 @@ export default {
         website: '',
         title: '',
       },
+
       nameRules: [
         (v) => !!v || 'Name is required',
-        (v) => (v && v.length <= 10) || 'Name must be less than 10 characters',
+        (v) => (v && v.length <= 20) || 'Name must be less than 20 characters',
       ],
-      emailRules: [
-        (v) => !!v || 'E-mail is required',
-        //(v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-      ],
+
+      emailRules: [(v) => !!v || 'E-mail is required'],
+
       addressRules: [(v) => !!v || 'Address is required'],
+
       phoneNumberRules: [(v) => !!v || 'Phone Number is required'],
+
       companynameRules: [(v) => !!v || 'Company Name is required'],
+
       websiteRules: [
         (v) =>
-          (v && v.length <= 10) || 'Website must be less than 10 characters',
+          (v && v.length <= 20) || 'Website must be less than 20 characters',
       ],
+
       titleRules: [
         (v) => !!v || 'Job Title is required',
         (v) =>
@@ -116,9 +122,6 @@ export default {
     };
   },
   methods: {
-    back() {
-      this.$emit('choosepage', 2);
-    },
     submit() {
       console.log('child submit function');
       this.$refs.form.validate();
@@ -126,16 +129,20 @@ export default {
         this.$emit('submitinfo', this.personalInfo);
       }
     },
+
     submit_preview() {
       console.log('child submit function');
       this.$emit('submitpreview', this.personalInfo);
     },
+
     validate() {
       this.$refs.form.validate();
     },
+
     reset() {
       this.$refs.form.reset();
     },
+
     resetValidation() {
       this.$refs.form.resetValidation();
     },
