@@ -7,7 +7,11 @@
       <v-form ref="form" v-model="valid" lazy-validation>
         <v-text-field
           v-model="personalInfo.name"
+<<<<<<< HEAD
           :counter="26"
+=======
+          :counter="20"
+>>>>>>> routing
           :rules="nameRules"
           label="Name"
           required
@@ -15,7 +19,11 @@
 
         <v-text-field
           v-model="personalInfo.title"
+<<<<<<< HEAD
           :counter="26"
+=======
+          :counter="20"
+>>>>>>> routing
           :rules="titleRules"
           label="Job Title"
           required
@@ -39,7 +47,11 @@
 
         <v-text-field
           v-model="personalInfo.website"
+<<<<<<< HEAD
           :counter="26"
+=======
+          :counter="20"
+>>>>>>> routing
           :rules="websiteRules"
           label="Website"
         ></v-text-field>
@@ -81,9 +93,17 @@
 <script>
 export default {
   name: 'UserForm',
+<<<<<<< HEAD
   data() {
     return {
       valid: true,
+=======
+
+  data() {
+    return {
+      valid: true,
+
+>>>>>>> routing
       personalInfo: {
         name: '',
         company: '',
@@ -93,6 +113,7 @@ export default {
         website: '',
         title: '',
       },
+<<<<<<< HEAD
       nameRules: [
         (v) => !!v || 'Name is required',
         (v) => (v && v.length <= 10) || 'Name must be less than 10 characters',
@@ -108,6 +129,27 @@ export default {
         (v) =>
           (v && v.length <= 10) || 'Website must be less than 10 characters',
       ],
+=======
+
+      nameRules: [
+        (v) => !!v || 'Name is required',
+        (v) => (v && v.length <= 20) || 'Name must be less than 20 characters',
+      ],
+
+      emailRules: [(v) => !!v || 'E-mail is required'],
+
+      addressRules: [(v) => !!v || 'Address is required'],
+
+      phoneNumberRules: [(v) => !!v || 'Phone Number is required'],
+
+      companynameRules: [(v) => !!v || 'Company Name is required'],
+
+      websiteRules: [
+        (v) =>
+          (v && v.length <= 20) || 'Website must be less than 20 characters',
+      ],
+
+>>>>>>> routing
       titleRules: [
         (v) => !!v || 'Job Title is required',
         (v) =>
@@ -116,9 +158,12 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     back() {
       this.$emit('choosepage', 2);
     },
+=======
+>>>>>>> routing
     submit() {
       console.log('child submit function');
       this.$refs.form.validate();
@@ -126,16 +171,32 @@ export default {
         this.$emit('submitinfo', this.personalInfo);
       }
     },
+<<<<<<< HEAD
+=======
+
+>>>>>>> routing
     submit_preview() {
       console.log('child submit function');
       this.$emit('submitpreview', this.personalInfo);
     },
+<<<<<<< HEAD
     validate() {
       this.$refs.form.validate();
     },
     reset() {
       this.$refs.form.reset();
     },
+=======
+
+    validate() {
+      this.$refs.form.validate();
+    },
+
+    reset() {
+      this.$refs.form.reset();
+    },
+
+>>>>>>> routing
     resetValidation() {
       this.$refs.form.resetValidation();
     },

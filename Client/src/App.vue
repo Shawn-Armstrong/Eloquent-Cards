@@ -3,6 +3,7 @@
     <router-view></router-view>
   </v-app>
 </template>
+<<<<<<< HEAD
 
 <script>
 // import UserForm from './components/User-Form.vue';
@@ -117,3 +118,5 @@ export default {
   margin-top: 60px;
 }
 </style> -->
+=======
+>>>>>>> routing
